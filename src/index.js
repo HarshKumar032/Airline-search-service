@@ -2,6 +2,7 @@
  const bodyparser=require('body-parser');
  
  const {PORT} =require('./config/serverconfig');
+ const ApiRoutes=require('./routes/index');
  //const CityRepository=require('./repository/city-repository');
 
  const setupandstartserver=async () =>{
@@ -11,6 +12,9 @@
 
     app.use(bodyparser.json());
     app.use(bodyparser.urlencoded({extended: true}));
+
+    app.use('/api', ApiRoutes);
+
 
     app.listen(PORT,()=>{
         console.log(`Server started at ${PORT}`); 
