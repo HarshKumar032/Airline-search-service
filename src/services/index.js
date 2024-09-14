@@ -1,3 +1,5 @@
+const CityService=require('./city-service')
+
 module.exports={
-    Cityservice : require('./city-service')
+    CityService
 }
