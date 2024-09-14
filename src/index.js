@@ -3,7 +3,6 @@
  
  const {PORT} =require('./config/serverconfig');
  const ApiRoutes=require('./routes/index');
- //const CityRepository=require('./repository/city-repository');
 
  const setupandstartserver=async () =>{
 
@@ -18,8 +17,9 @@
 
     app.listen(PORT,()=>{
         console.log(`Server started at ${PORT}`); 
-        //const repo=new CityRepository();
-        //repo.createcity({ name: "New Delhi"})
+        if(process.env.SYNC_DB) {
+            db.sequelize.sync({alter: true});
+        }
     });
   
  }
